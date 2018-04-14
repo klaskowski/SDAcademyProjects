@@ -35,6 +35,20 @@ public class DoubleList {
 
     }
 
+    static void copyListDecrease(int[] source, int[] target, int count){
+        for(int i = 0; i < count; i++)
+            target[i] = source[i];
+    }
+//de testat!!!!!!!!!!!!!
+    static void decreaseCapacity(){
+        int[] newList = new int[capacity/2];
+        copyListDecrease(list, newList, capacity/2);
+        capacity /=2;
+        list = newList;
+
+    }
+
+
     static void remove(int index) {
         if (index >= 0 && index <= lastPosition) {
             int removedItem = list[index];
@@ -42,8 +56,9 @@ public class DoubleList {
                 list[i] = list[i + 1];
             }
             lastPosition--;
-        } else {
-            System.out.println("Element out of bounds!!!");
+            if(lastPosition < (capacity/2)){
+                decreaseCapacity();
+            }
         }
     }
 
@@ -97,7 +112,27 @@ public class DoubleList {
         remove(removeIndex);
         System.out.println("The list with element removed is: ");
         iterate();
+        System.out.println("Capacity is " + capacity);
         System.out.println();
+
+
+//removing extra elements
+        System.out.println("Input element to remove: ");
+        int removeIndex1 = sc.nextInt();
+        remove(removeIndex1);
+        System.out.println("The list with element removed is: ");
+        iterate();
+        System.out.println("Capacity is " + capacity);
+        System.out.println();
+        System.out.println("Input element to remove: ");
+        int removeIndex2 = sc.nextInt();
+        remove(removeIndex2);
+        System.out.println("The list with element removed is: ");
+        iterate();
+        System.out.println("Capacity is " + capacity);
+        System.out.println();
+//done removing extra elements
+
 
         System.out.println("What element you want to find?");
         int findIndex = sc.nextInt();
