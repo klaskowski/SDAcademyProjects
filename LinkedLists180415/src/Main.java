@@ -10,7 +10,10 @@ public class Main {
         displayList();
         removeFirstValue(3);
         displayList();
-        removeAllValues(1);
+        int counter = removeAllValues(1);
+        displayList();
+        System.out.println("You deleted " + counter + " items");
+        removeForIndex(0);
         displayList();
     }
 
@@ -82,9 +85,11 @@ public class Main {
     private static int removeValues(int value, boolean stopOnFirst){
         Node currentNode = firstNode;
         Node previousNode = null;
+        int counter = 0;
         while (currentNode != null) {
             if (currentNode.getValue() == value) {
                 deleteNode(previousNode);
+                counter++;
                 if(stopOnFirst){
                     break;
                 }
@@ -93,12 +98,22 @@ public class Main {
             }
             currentNode = currentNode.getNextNode();
         }
-        return 0;
+        return counter;
     }
 
     public static int removeForIndex(int index) {
-
-
+        Node currentNode = firstNode;
+        Node previousNode = null;
+        int position = 0;
+        while(currentNode != null){
+            if(position == index){
+                deleteNode(previousNode);
+            }else{
+                previousNode = currentNode;
+            }
+            position++;
+            currentNode = currentNode.getNextNode();
+        }
 
         return 0;
     }
