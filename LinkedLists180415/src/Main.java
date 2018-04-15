@@ -43,8 +43,6 @@ public class Main {
         }
     }
 
-
-
     private static void deleteNode(Node previousNode) {
         if (previousNode == null) {
             deleteFirstNode();
@@ -90,14 +88,18 @@ public class Main {
                 if(stopOnFirst){
                     break;
                 }
+            }else{
+                previousNode = currentNode;
             }
-            previousNode = currentNode;
             currentNode = currentNode.getNextNode();
         }
         return 0;
     }
 
     public static int removeForIndex(int index) {
+
+
+
         return 0;
     }
 
