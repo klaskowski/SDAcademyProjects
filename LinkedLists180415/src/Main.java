@@ -114,10 +114,8 @@ public class Main {
             position++;
             currentNode = currentNode.getNextNode();
         }
-
         return 0;
     }
-
 
     public static void displayList() {
         Node currentNode = firstNode;
