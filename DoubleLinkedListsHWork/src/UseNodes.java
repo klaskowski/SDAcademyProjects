@@ -9,12 +9,13 @@ public class UseNodes {
         System.out.println();
         displayList();
         System.out.println();
-        removeValue("as");
-        displayList();
-        deleteElementByIndex(2);
-        displayList();
-        insertElementToIndex(0, "InsertedTo0");
-        displayList();
+        //removeValue("as");
+        //displayList();
+        //deleteElementByIndex(2);
+        //displayList();
+        //insertElementToIndex(0, "InsertedTo0");
+        //displayList();
+        displayReverseList();
     }
 
     private static void createList() {
@@ -56,6 +57,19 @@ public class UseNodes {
             System.out.print(currentNode.getValue());
             currentNode = currentNode.getNextNode();
             if (currentNode != null) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("}");
+    }
+
+    private static void displayReverseList(){
+        Node currentNode = lastNode;
+        System.out.print("{");
+        while(currentNode != null){
+            System.out.print(currentNode.getValue());
+            currentNode = currentNode.getPreviousNode();
+            if(currentNode != null){
                 System.out.print(", ");
             }
         }
