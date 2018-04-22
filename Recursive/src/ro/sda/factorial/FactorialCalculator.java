@@ -1,11 +1,14 @@
 package ro.sda.factorial;
 
+import java.math.BigDecimal;
+
 public class FactorialCalculator {
-    public Long calculate(int value){
+    public BigDecimal calculate(int value){
         if(value == 1){
-            return 1L;
+            return new BigDecimal(1);
         } else{
-            return value * calculate(value -1);
+
+            return BigDecimal.valueOf(value).multiply(calculate(value -1));
         }
     }
 }
