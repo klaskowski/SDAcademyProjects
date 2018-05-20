@@ -3,9 +3,9 @@ import java.util.Map;
 
 public class MorseCode {
 
-    public static Map<String, String> MORSE_CODE = new HashMap<String, String>();
+    public static final Map<String, String> MORSE_CODE = new HashMap<String, String>();
 
-    public MorseCode(){
+    static{
         MORSE_CODE.put("a", ".-");
         MORSE_CODE.put("b", "-...");
         MORSE_CODE.put("c",  "-.-");
