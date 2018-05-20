@@ -11,10 +11,16 @@ public class Main {
         MyFileReader myFileReader = new MyFileReader();
         MyMorseTranslator myMorseTranslator = new MyMorseTranslator();
         MySystemDisplay mySystemDisplay = new MySystemDisplay();
+        MyFileWriter myFileWriter = new MyFileWriter();
+
         System.out.println("**********SystemReader************");
         translate(mySystemReader, myMorseTranslator, mySystemDisplay);
+
         System.out.println("***************File Reader*********");
         translate(myFileReader, myMorseTranslator, mySystemDisplay);
+
+        System.out.println("***************File Writer*********");
+        translate(myFileReader, myMorseTranslator, myFileWriter);
 
 
     }
