@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SDASystemReader implements IReader{
+public class MySystemReader implements IReader{
 
     @Override
     public String read() {

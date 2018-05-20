@@ -7,11 +7,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        SDASystemReader sysRead = new SDASystemReader();
-        SDATranslate trans = new SDATranslate();
-        SDADisplayer displayer = new SDADisplayer();
+        MySystemReader mySystemReader = new MySystemReader();
+        MyFileReader myFileReader = new MyFileReader();
+        MyMorseTranslator myMorseTranslator = new MyMorseTranslator();
+        MySystemDisplay mySystemDisplay = new MySystemDisplay();
+        System.out.println("**********SystemReader************");
+        translate(mySystemReader, myMorseTranslator, mySystemDisplay);
+        System.out.println("***************File Reader*********");
+        translate(myFileReader, myMorseTranslator, mySystemDisplay);
 
-        translate(sysRead, trans, displayer);
 
     }
 }
