@@ -34,6 +34,16 @@ public class Department {
         currentNrOfEmps++;
     }
 
+    public void showEmpsHireDates() {
+
+        for (int i = 0; i < currentNoEmp; i++) {
+            System.out.println("Employee + " +
+                    employees[i].getName() +
+                    " hired on " +
+                    EmpUtils.format(employees[i].getHireDate())
+            );
+        }
+    }
     public void showEmployees(){
         System.out.println("Department: " + name);
         System.out.println();
