@@ -1,0 +1,20 @@
+700001	Iasi	Iasi	Strada Strapungere Silvestru 1,7
+700002	Iasi	Iasi	Strada Strapungere Silvestru 9,11
+010017	Bucuresti	Bucuresti	Strada Edgar Quinet 1
+010018	Bucuresti	Bucuresti	Strada Edgar Quinet 2
+010019	Bucuresti	Bucuresti	Strada Biserica Enei
+300002	Timis	Timisoara	Strada Blaga Lucian 2,3
+300001	Timis	Timisoara	Bulevard Republicii 2,8
+300004	Timis	Timisoara	Piata Huniade Iancu 1,2
+300003	Timis	Timisoara	Strada Enescu Ion 4,8
+400001	Cluj	Cluj Napoca	Cale Motilor 1,40
+400002	Cluj	Cluj Napoca	Strada Maior Petru
+400003	Cluj	Cluj Napoca	Piata Blaga Lucian 1,2
+500003	Brasov	Brasov	Strada Dobrogeanu Gherea 1,75
+500007	Brasov	Brasov	Strada Pietii
+500008	Brasov	Brasov	Piata Teatrului 2,3
+500009	Brasov	Brasov	Bulevard Eroilor 1,7
+600001	Bacau	Bacau	Strada Ipatescu Ana 1,3
+600002	Bacau	Bacau	Strada Ipatescu Ana 5,32
+600004	Bacau	Bacau	Strada Florilor 1,4
+600003	Bacau	Bacau	Strada Valea Alba 1,4

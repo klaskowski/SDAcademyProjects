@@ -1,0 +1,9 @@
+700001: Strada Strapungere Silvestru, Iasi 4
+010017: Strada Edgar Quinet, Bucuresti 1
+300002: Strada Blaga Lucian, Timisoara 3
+400001: Cale Motilor, Cluj 38
+500003: Strada Dobrogeanu Gherea, Brasov 69
+101110:  ,   1
+600002: Strada Ipatescu Ana, Bacau 32
+700002: Strada Strapungere Silvestru, Iasi 9
+010019: Strada Biserica Enei, Bucuresti 97
