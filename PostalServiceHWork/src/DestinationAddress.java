@@ -32,23 +32,21 @@ public class DestinationAddress {
         }
     }
 
-    private void completeAddress(String code, Integer houseNumber, String[] array) {
+    private void completeAddress(String code, Integer houseNumber, String[] array) throws InvalidAddressException{
         for (String key : PostCodes.POST_CODES.keySet()) {
-            try {
-                if (code.equals(key)) {
-                    PostAreaCode searchedKey = PostCodes.POST_CODES.get(key);
-                    if (houseNumber >= searchedKey.minHouseNo || houseNumber <= searchedKey.maxHouseNo) {
-                        array[1] = searchedKey.city;
-                        array[2] = searchedKey.streetName;
-                    } else {
-                        throw invalidAddressException();
-                    }
-                } else {
-                    throw invalidAddressException();
-                }
-            } catch (InvalidAddressException e) {
 
+            if (code.equals(key)) {
+                PostAreaCode searchedKey = PostCodes.POST_CODES.get(key);
+                if (houseNumber >= searchedKey.minHouseNo || houseNumber <= searchedKey.maxHouseNo) {
+                    array[1] = searchedKey.city;
+                    array[2] = searchedKey.streetName;
+                } else {
+                    throw new InvalidAddressException();
+                }
+            } else {
+                throw new InvalidAddressException();
             }
+
         }
     }
 
