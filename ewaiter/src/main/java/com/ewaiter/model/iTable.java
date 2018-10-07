@@ -15,28 +15,20 @@ public class iTable {
     @OneToMany(mappedBy = "iTable")
     private List<Order> orders;
 
-    public Long getITableId() {
-        return iTableId;
-    }
-
-    public void setITableId(Long id) {
-        this.iTableId = id;
-    }
-
-    public int getTableNo() {
-        return tableNo;
-    }
-
-    public void setTableNo(int table_no) {
-        this.tableNo = table_no;
-    }
-
     public Long getiTableId() {
         return iTableId;
     }
 
     public void setiTableId(Long iTableId) {
         this.iTableId = iTableId;
+    }
+
+    public int getTableNo() {
+        return tableNo;
+    }
+
+    public void setTableNo(int tableNo) {
+        this.tableNo = tableNo;
     }
 
     public List<Order> getOrders() {
