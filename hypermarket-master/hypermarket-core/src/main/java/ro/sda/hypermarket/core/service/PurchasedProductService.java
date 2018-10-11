@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface PurchasedProductService {
 
-    public PurchasedProduct create(PurchasedProduct purchasedProduct);
+    public PurchasedProduct create(PurchasedProduct purchasedProduct, boolean useHibernate);
 
-    public PurchasedProduct update (PurchasedProduct purchasedProduct);
+    public PurchasedProduct update (PurchasedProduct purchasedProduct, boolean useHibernate);
 
-    public PurchasedProduct getPurchasedProduct(long id);
+    public PurchasedProduct getPurchasedProduct(long id, boolean useHibernate);
 
-    public List<PurchasedProduct> findAll();
+    public List<PurchasedProduct> findAll(boolean useHibernate);
 
-    public void delete(PurchasedProduct purchasedProduct);
+    public void delete(PurchasedProduct purchasedProduct, boolean useHibernate);
 }

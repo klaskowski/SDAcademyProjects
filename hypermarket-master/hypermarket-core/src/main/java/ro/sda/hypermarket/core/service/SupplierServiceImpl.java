@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ro.sda.hypermarket.core.dao.SupplierDAO;
 import ro.sda.hypermarket.core.entity.Supplier;
+import ro.sda.hypermarket.core.repository.SupplierRepository;
 
 import java.util.List;
 
@@ -15,33 +16,57 @@ public class SupplierServiceImpl implements SupplierService {
     @Autowired
     private SupplierDAO supplierDAO;
 
+    @Autowired
+    private SupplierRepository supplierRepository;
+
     @Override
-    public Supplier create(Supplier supplier) {
-        return supplierDAO.create(supplier);
+    @Transactional
+    public Supplier create(Supplier supplier, boolean useHibernate) {
+        if(useHibernate) {
+            return supplierDAO.create(supplier);
+        }
+        return supplierRepository.save(supplier);
     }
 
     @Override
-    public Supplier update(Supplier supplier) {
-        return supplierDAO.update(supplier);
+    @Transactional
+    public Supplier update(Supplier supplier, boolean useHibernate) {
+        if(useHibernate) {
+            return supplierDAO.update(supplier);
+        } return supplierRepository.save(supplier);
     }
 
     @Override
-    public Supplier getSupplier(long id) {
-        return supplierDAO.getSupplier(id);
+    public Supplier getSupplier(long id, boolean useHibernate) {
+        if(useHibernate) {
+            return supplierDAO.getSupplier(id);
+        }
+        return supplierRepository.findById(id);
     }
 
     @Override
-    public Supplier findByName(String supplierName) {
-        return supplierDAO.findByName(supplierName);
+    public Supplier findByName(String supplierName, boolean useHibernate) {
+        if(useHibernate) {
+            return supplierDAO.findByName(supplierName);
+        } return supplierRepository.findByName(supplierName);
     }
 
     @Override
-    public List<Supplier> findAll() {
-        return supplierDAO.findAll();
+    public List<Supplier> findAll(boolean useHibernate) {
+        if(useHibernate) {
+            return supplierDAO.findAll();
+        }
+        return supplierRepository.findAll();
     }
 
     @Override
-    public void delete(Supplier supplier){
-        supplierDAO.delete(supplier);
+    @Transactional
+    public void delete(Supplier supplier, boolean useHibernate){
+        if(useHibernate) {
+            supplierDAO.delete(supplier);
+        } else{
+            supplierRepository.delete(supplier);
+        }
     }
+
 }

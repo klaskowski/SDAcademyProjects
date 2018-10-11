@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface ClientService {
 
-    public Client create(Client client);
+    public Client create(Client client, boolean useHibernate);
 
-    public Client update(Client client);
+    public Client update(Client client, boolean useHibernate);
 
-    public Client getClient(long id);
+    public Client getClient(long id, boolean useHibernate);
 
-    public List<Client> findAll();
+    public List<Client> findAll(boolean useHibernate);
 
-    public void delete(Client client);
+    public void delete(Client client, boolean useHibernate);
 }

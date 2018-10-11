@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ro.sda.hypermarket.core.dao.EmployeeDAO;
 import ro.sda.hypermarket.core.entity.Employee;
+import ro.sda.hypermarket.core.repository.EmployeeRepository;
 
 import java.util.List;
 
@@ -15,28 +16,47 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeDAO employeeDAO;
 
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @Override
-    public Employee create(Employee employee) {
-        return employeeDAO.create(employee);
+    public Employee create(Employee employee, boolean useHibernate) {
+        if(useHibernate) {
+            return employeeDAO.create(employee);
+        }
+        return employeeRepository.save(employee);
     }
 
     @Override
-    public Employee update(Employee employee) {
-        return employeeDAO.update(employee);
+    public Employee update(Employee employee, boolean useHibernate) {
+        if(useHibernate) {
+            return employeeDAO.update(employee);
+        }
+        return employeeRepository.save(employee);
     }
 
     @Override
-    public Employee getEmployee(long id) {
-        return employeeDAO.getEmployee(id);
+    public Employee getEmployee(long id, boolean useHibernate) {
+        if(useHibernate) {
+            return employeeDAO.getEmployee(id);
+        }
+        return employeeRepository.findById(id);
     }
 
     @Override
-    public List<Employee> findAll() {
-        return employeeDAO.findAll();
+    public List<Employee> findAll(boolean useHibernate) {
+        if(useHibernate) {
+            return employeeDAO.findAll();
+        }
+        return employeeRepository.findAll();
     }
 
     @Override
-    public void delete(Employee employee) {
-        employeeDAO.delete(employee);
+    public void delete(Employee employee, boolean useHibernate) {
+        if(useHibernate) {
+            employeeDAO.delete(employee);
+        } else {
+            employeeRepository.delete(employee);
+        }
     }
 }

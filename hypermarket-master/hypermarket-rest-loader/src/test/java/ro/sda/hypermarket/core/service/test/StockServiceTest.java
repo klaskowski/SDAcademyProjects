@@ -28,59 +28,59 @@ public class StockServiceTest {
     @Test
     public void testCreate(){
         Stock stock = new Stock();
-        Product product = productService.getProduct(8);
+        Product product = productService.getProduct(8, false);
         stock.setProduct(product);
         stock.setAcquisitionCost(25);
         stock.setBatchNo("1");
         stock.setSellingCost(35);
         stock.setStockAmount(100);
-        stock = stockService.create(stock);
+        stock = stockService.create(stock, false);
         assertNotNull(stock);
-        stockService.delete(stock);
+        stockService.delete(stock, false);
     }
 
     @Test
     public void testUpdate(){
         Stock stock = new Stock();
-        Product product = productService.getProduct(8);
+        Product product = productService.getProduct(8, false);
         stock.setProduct(product);
         stock.setAcquisitionCost(25);
         stock.setBatchNo("1");
         stock.setSellingCost(35);
         stock.setStockAmount(100);
-        stock = stockService.create(stock);
+        stock = stockService.create(stock, false);
         stock.setSellingCost(75);
-        stockService.update(stock);
+        stockService.update(stock, false);
         assertTrue(stock.getSellingCost() == 75);
-        stockService.delete(stock);
+        stockService.delete(stock, false);
     }
 
     @Test
     public void testGetStock(){
         Stock stock = new Stock();
-        Product product = productService.getProduct(8);
+        Product product = productService.getProduct(8, false);
         stock.setProduct(product);
         stock.setAcquisitionCost(25);
         stock.setBatchNo("1");
         stock.setSellingCost(35);
         stock.setStockAmount(100);
-        stock = stockService.create(stock);
-        assertNotNull(stockService.getStock(stock.getId()));
-        stockService.delete(stock);
+        stock = stockService.create(stock, false);
+        assertNotNull(stockService.getStock(stock.getId(), false));
+        stockService.delete(stock, false);
     }
 
     @Test
     public void testDelete(){
         Stock stock = new Stock();
-        Product product = productService.getProduct(8);
+        Product product = productService.getProduct(8, false);
         stock.setProduct(product);
         stock.setAcquisitionCost(25);
         stock.setBatchNo("1");
         stock.setSellingCost(35);
         stock.setStockAmount(100);
-        stock = stockService.create(stock);
-        stockService.delete(stock);
-        assertNull(stockService.getStock(stock.getId()));
+        stock = stockService.create(stock, false);
+        stockService.delete(stock, false);
+        assertNull(stockService.getStock(stock.getId(), false));
     }
 
     @Test
@@ -94,13 +94,13 @@ public class StockServiceTest {
     @Test
     public void testFindAll(){
         Stock stock = new Stock();
-        Product product = productService.getProduct(8);
+        Product product = productService.getProduct(8, false);
         stock.setProduct(product);
         stock.setAcquisitionCost(25);
         stock.setBatchNo("1");
         stock.setSellingCost(35);
         stock.setStockAmount(100);
-        stock = stockService.create(stock);
+        stock = stockService.create(stock, false);
 
         Stock stock1 = new Stock();
         stock1.setProduct(product);
@@ -108,11 +108,11 @@ public class StockServiceTest {
         stock1.setBatchNo("6");
         stock1.setSellingCost(987);
         stock1.setStockAmount(1000);
-        stock1 = stockService.create(stock1);
-        List<Stock> stockList = stockService.findAll();
+        stock1 = stockService.create(stock1, false);
+        List<Stock> stockList = stockService.findAll(false);
         assertNotNull(stockList);
         stockList.forEach(System.out::println);
-        stockService.delete(stock);
-        stockService.delete(stock1);
+        stockService.delete(stock, false);
+        stockService.delete(stock1, false);
     }
 }

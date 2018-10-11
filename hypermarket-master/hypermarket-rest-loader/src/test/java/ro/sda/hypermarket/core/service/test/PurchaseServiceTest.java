@@ -36,104 +36,104 @@ public class PurchaseServiceTest {
     public void testCreate(){
         Purchase purchase = new Purchase();
         Client client = new Client();
-        client = clientService.getClient(1);
+        client = clientService.getClient(1, false);
         purchase.setClient(client);
         Employee employee = new Employee();
-        employee = employeeService.getEmployee(2);
+        employee = employeeService.getEmployee(2, false);
         purchase.setEmployee(employee);
         purchase.setPurchaseDate(new Date(2017,10,10));
         purchase.setReceiptNo(5);
         purchase.setTotalPrice(9650);
-        purchase = purchaseService.create(purchase);
+        purchase = purchaseService.create(purchase, false);
         assertNotNull(purchase);
         System.out.println(purchase);
-        purchaseService.delete(purchase);
+        purchaseService.delete(purchase, false);
     }
 
     @Test
     public void testUpdate(){
         Purchase purchase = new Purchase();
         Client client = new Client();
-        client = clientService.getClient(1);
+        client = clientService.getClient(1, false);
         purchase.setClient(client);
         Employee employee = new Employee();
-        employee = employeeService.getEmployee(2);
+        employee = employeeService.getEmployee(2, false);
         purchase.setEmployee(employee);
         purchase.setPurchaseDate(new Date(2018,10,25));
         purchase.setReceiptNo(1);
         purchase.setTotalPrice(5000);
-        purchase = purchaseService.create(purchase);
+        purchase = purchaseService.create(purchase, false);
         purchase.setTotalPrice(7000);
-        purchase = purchaseService.update(purchase);
+        purchase = purchaseService.update(purchase, false);
         System.out.println(purchase);
-        purchaseService.delete(purchase);
+        purchaseService.delete(purchase, false);
     }
 
     @Test
     public void testGetPurchase(){
         Purchase purchase = new Purchase();
         Client client = new Client();
-        client = clientService.getClient(1);
+        client = clientService.getClient(1, false);
         purchase.setClient(client);
         Employee employee = new Employee();
-        employee = employeeService.getEmployee(2);
+        employee = employeeService.getEmployee(2, false);
         purchase.setEmployee(employee);
         purchase.setPurchaseDate(new Date(2018,10,25));
         purchase.setReceiptNo(1);
         purchase.setTotalPrice(5000);
-        purchase = purchaseService.create(purchase);
+        purchase = purchaseService.create(purchase, false);
 
-        assertNotNull(purchaseService.getPurchase(purchase.getId()));
-        purchaseService.delete(purchase);
+        assertNotNull(purchaseService.getPurchase(purchase.getId(), false));
+        purchaseService.delete(purchase, false);
     }
 
     @Test
     public void testDelete(){
         Purchase purchase = new Purchase();
         Client client = new Client();
-        client = clientService.getClient(1);
+        client = clientService.getClient(1, false);
         purchase.setClient(client);
         Employee employee = new Employee();
-        employee = employeeService.getEmployee(2);
+        employee = employeeService.getEmployee(2, false);
         purchase.setEmployee(employee);
         purchase.setPurchaseDate(new Date(2018,10,25));
         purchase.setReceiptNo(1);
         purchase.setTotalPrice(5000);
-        purchase = purchaseService.create(purchase);
-        purchaseService.delete(purchase);
-        assertNull(purchaseService.getPurchase(purchase.getId()));
+        purchase = purchaseService.create(purchase, false);
+        purchaseService.delete(purchase, false);
+        assertNull(purchaseService.getPurchase(purchase.getId(), false));
     }
 
     @Test
     public void testFindAll(){
         Purchase purchase = new Purchase();
         Client client = new Client();
-        client = clientService.getClient(1);
+        client = clientService.getClient(1, false);
         purchase.setClient(client);
         Employee employee = new Employee();
-        employee = employeeService.getEmployee(2);
+        employee = employeeService.getEmployee(2, false);
         purchase.setEmployee(employee);
         purchase.setPurchaseDate(new Date(2018,10,25));
         purchase.setReceiptNo(1);
         purchase.setTotalPrice(5000);
-        purchase = purchaseService.create(purchase);
+        purchase = purchaseService.create(purchase, false);
 
         Purchase purchase1 = new Purchase();
-        client = clientService.getClient(1);
+        client = clientService.getClient(1, false);
         purchase1.setClient(client);
-        employee = employeeService.getEmployee(2);
+        employee = employeeService.getEmployee(2, false);
         purchase1.setEmployee(employee);
         purchase1.setPurchaseDate(new Date(2018,10,29));
         purchase1.setReceiptNo(2);
         purchase1.setTotalPrice(89000);
-        purchase1 = purchaseService.create(purchase1);
+        purchase1 = purchaseService.create(purchase1, false);
 
         List<Purchase> purchaseList = new ArrayList<>();
-        purchaseList = purchaseService.findAll();
+        purchaseList = purchaseService.findAll(false);
         assertNotNull(purchaseList);
         purchaseList.forEach(System.out::println);
-        purchaseService.delete(purchase);
-        purchaseService.delete(purchase1);
+        purchaseService.delete(purchase, false);
+        purchaseService.delete(purchase1, false);
         }
 
 

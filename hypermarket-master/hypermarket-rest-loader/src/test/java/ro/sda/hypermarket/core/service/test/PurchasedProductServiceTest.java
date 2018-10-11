@@ -32,81 +32,81 @@ public class PurchasedProductServiceTest {
     @Test
     public void testCreate(){
         PurchasedProduct purchasedProduct = new PurchasedProduct();
-        Product product = productService.getProduct(10);
+        Product product = productService.getProduct(10, false);
         purchasedProduct.setProduct(product);
         purchasedProduct.setProductAmount(1);
-        Purchase purchase = purchaseService.getPurchase(10);
+        Purchase purchase = purchaseService.getPurchase(10, false);
         purchasedProduct.setPurchase(purchase);
-        purchasedProduct = purchasedProductService.create(purchasedProduct);
+        purchasedProduct = purchasedProductService.create(purchasedProduct, false);
         assertNotNull(purchasedProduct);
         System.out.println(purchasedProduct.toString());
-        purchasedProductService.delete(purchasedProduct);
+        purchasedProductService.delete(purchasedProduct, false);
     }
 
     @Test
     public void testUpdate(){
         PurchasedProduct purchasedProduct = new PurchasedProduct();
-        Product product = productService.getProduct(8);
+        Product product = productService.getProduct(8, false);
         purchasedProduct.setProduct(product);
         purchasedProduct.setProductAmount(3);
-        Purchase purchase = purchaseService.getPurchase(7);
+        Purchase purchase = purchaseService.getPurchase(7, false);
         purchasedProduct.setPurchase(purchase);
-        purchasedProduct = purchasedProductService.create(purchasedProduct);
+        purchasedProduct = purchasedProductService.create(purchasedProduct, false);
         System.out.println(purchasedProduct.toString());
         purchasedProduct.setProductAmount(89);
-        purchasedProduct = purchasedProductService.update(purchasedProduct);
+        purchasedProduct = purchasedProductService.update(purchasedProduct, false);
         assertTrue(purchasedProduct.getProductAmount() == 89);
         System.out.println(purchasedProduct.toString());
-        purchasedProductService.delete(purchasedProduct);
+        purchasedProductService.delete(purchasedProduct, false);
     }
 
     @Test
     public void testGetPurchasedProduct(){
         PurchasedProduct purchasedProduct = new PurchasedProduct();
-        Product product = productService.getProduct(8);
+        Product product = productService.getProduct(8, false);
         purchasedProduct.setProduct(product);
         purchasedProduct.setProductAmount(4);
-        Purchase purchase = purchaseService.getPurchase(7);
+        Purchase purchase = purchaseService.getPurchase(7, false);
         purchasedProduct.setPurchase(purchase);
-        purchasedProduct = purchasedProductService.create(purchasedProduct);
+        purchasedProduct = purchasedProductService.create(purchasedProduct, false);
         System.out.println(purchasedProduct.toString());
-        assertNotNull(purchasedProductService.getPurchasedProduct(purchasedProduct.getId()));
-        purchasedProductService.delete(purchasedProduct);
+        assertNotNull(purchasedProductService.getPurchasedProduct(purchasedProduct.getId(), false));
+        purchasedProductService.delete(purchasedProduct, false);
     }
 
     @Test
     public void testDelete(){
         PurchasedProduct purchasedProduct = new PurchasedProduct();
-        Product product = productService.getProduct(8);
+        Product product = productService.getProduct(8, false);
         purchasedProduct.setProduct(product);
         purchasedProduct.setProductAmount(99);
-        Purchase purchase = purchaseService.getPurchase(7);
+        Purchase purchase = purchaseService.getPurchase(7, false);
         purchasedProduct.setPurchase(purchase);
-        purchasedProduct = purchasedProductService.create(purchasedProduct);
-        purchasedProductService.delete(purchasedProduct);
-        assertNull(purchasedProductService.getPurchasedProduct(purchasedProduct.getId()));
+        purchasedProduct = purchasedProductService.create(purchasedProduct, false);
+        purchasedProductService.delete(purchasedProduct, false);
+        assertNull(purchasedProductService.getPurchasedProduct(purchasedProduct.getId(), false));
     }
 
     @Test
     public void testFindAll(){
         PurchasedProduct purchasedProduct = new PurchasedProduct();
-        Product product = productService.getProduct(8);
+        Product product = productService.getProduct(8, false);
         purchasedProduct.setProduct(product);
         purchasedProduct.setProductAmount(99);
-        Purchase purchase = purchaseService.getPurchase(7);
+        Purchase purchase = purchaseService.getPurchase(7, false);
         purchasedProduct.setPurchase(purchase);
-        purchasedProduct = purchasedProductService.create(purchasedProduct);
+        purchasedProduct = purchasedProductService.create(purchasedProduct, false);
 
         PurchasedProduct purchasedProduct1 = new PurchasedProduct();
         purchasedProduct1.setProduct(product);
         purchasedProduct1.setProductAmount(23);
         purchasedProduct1.setPurchase(purchase);
-        purchasedProduct1 = purchasedProductService.create(purchasedProduct1);
+        purchasedProduct1 = purchasedProductService.create(purchasedProduct1, false);
 
-        List<PurchasedProduct> purchasedProductList = purchasedProductService.findAll();
+        List<PurchasedProduct> purchasedProductList = purchasedProductService.findAll(false);
         assertNotNull(purchasedProductList);
         purchasedProductList.forEach(System.out::println);
-        purchasedProductService.delete(purchasedProduct);
-        purchasedProductService.delete(purchasedProduct1);
+        purchasedProductService.delete(purchasedProduct, false);
+        purchasedProductService.delete(purchasedProduct1, false);
     }
 }

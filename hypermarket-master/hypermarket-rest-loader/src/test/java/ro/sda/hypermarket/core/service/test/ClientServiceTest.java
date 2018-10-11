@@ -27,10 +27,10 @@ public class ClientServiceTest {
         client.setName("Test Client2");
         client.setType("test type");
 
-        clientService.create(client);
+        clientService.create(client, false);
         System.out.println(client.toString());
         assertNotNull(client);
-        clientService.delete(client);
+        clientService.delete(client, false);
     }
 
     @Test
@@ -38,12 +38,12 @@ public class ClientServiceTest {
         Client client = new Client();
         client.setName("Test Client3");
         client.setType("test type");
-        clientService.create(client);
+        clientService.create(client, false);
         client.setName("Updated Client Name");
-        clientService.update(client);
+        clientService.update(client, false);
 
         System.out.println(client.toString());
-        clientService.delete(client);
+        clientService.delete(client, false);
     }
 
     @Test
@@ -52,11 +52,11 @@ public class ClientServiceTest {
         client.setName("Test Client3");
         client.setType("test type");
 
-        clientService.create(client);
+        clientService.create(client, false);
 
-        assertNotNull(clientService.getClient(client.getId()));
+        assertNotNull(clientService.getClient(client.getId(), false));
         System.out.println(client.toString());
-        clientService.delete(client);
+        clientService.delete(client, false);
     }
 
     @Test
@@ -65,20 +65,20 @@ public class ClientServiceTest {
         client.setName("Test Client50");
         client.setType("test type");
 
-        client = clientService.create(client);
+        client = clientService.create(client, false);
 
         Client client1 = new Client();
         client1.setName("Test Client58");
         client1.setType("test type2");
 
-        client1 = clientService.create(client1);
+        client1 = clientService.create(client1, false);
 
         List<Client> clientList = new ArrayList<>();
-        clientList = clientService.findAll();
+        clientList = clientService.findAll(false);
         assertNotNull(clientList);
         clientList.forEach(System.out::println);
-        clientService.delete(client);
-        clientService.delete(client1);
+        clientService.delete(client, false);
+        clientService.delete(client1, false);
     }
 
     @Test
@@ -86,10 +86,10 @@ public class ClientServiceTest {
         Client client = new Client();
         client.setName("Client 4 Deletion");
         client.setType("Type for Deletion");
-        clientService.create(client);
+        clientService.create(client, false);
 
-        clientService.delete(client);
+        clientService.delete(client, false);
 
-        assertNull(clientService.getClient(client.getId()));
+        assertNull(clientService.getClient(client.getId(), false));
     }
 }

@@ -5,15 +5,18 @@ import ro.sda.hypermarket.core.entity.Supplier;
 import java.util.List;
 
 public interface SupplierService {
-    public Supplier create(Supplier supplier);
 
-    public Supplier update (Supplier supplier);
+    public Supplier create(Supplier supplier, boolean useHibernate);
 
-    public Supplier getSupplier(long id);
+    public Supplier update (Supplier supplier, boolean useHibernate);
 
-    public Supplier findByName(String supplierName);
+    public Supplier getSupplier(long id, boolean useHibernate);
 
-    public List<Supplier> findAll();
+    public Supplier findByName(String supplierName, boolean useHibernate);
 
-    public void delete(Supplier supplier);
+    public List<Supplier> findAll(boolean useHibernate);
+
+    public void delete(Supplier supplier, boolean useHibernate);
+
+
 }

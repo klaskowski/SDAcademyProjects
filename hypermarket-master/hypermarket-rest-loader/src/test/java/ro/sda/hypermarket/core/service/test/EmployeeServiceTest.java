@@ -36,9 +36,9 @@ public class EmployeeServiceTest {
         employee.setEmail("em@email.ro");
         employee.setPhoneNo("0745896312");
 
-        employeeService.create(employee);
+        employeeService.create(employee, false);
         assertNotNull(employee.getId());
-        employeeService.delete(employee);
+        employeeService.delete(employee, false);
     }
 
     @Test
@@ -54,14 +54,14 @@ public class EmployeeServiceTest {
         employee.setEmail("em@email98.ro");
         employee.setPhoneNo("6541230987");
 
-        employeeService.create(employee);
+        employeeService.create(employee, false);
         System.out.println(employee.toString());
         employee.setLastName("UpdatedLN");
         employee.setFirstName("updatedFN");
-        employeeService.update(employee);
+        employeeService.update(employee, false);
         System.out.println(employee.toString());
         assertTrue(employee.getFirstName().equals("updatedFN"));
-        employeeService.delete(employee);
+        employeeService.delete(employee, false);
     }
 
     @Test
@@ -77,10 +77,10 @@ public class EmployeeServiceTest {
         employee.setEmail("em@email.ro");
         employee.setPhoneNo("0745896316");
 
-        employeeService.create(employee);
-        assertNotNull(employeeService.getEmployee(employee.getId()));
+        employeeService.create(employee, false);
+        assertNotNull(employeeService.getEmployee(employee.getId(), false));
         System.out.println(employee.toString());
-        employeeService.delete(employee);
+        employeeService.delete(employee, false);
     }
 
     @Test
@@ -95,7 +95,7 @@ public class EmployeeServiceTest {
         employee1.setAddress("Home1");
         employee1.setEmail("em@email.ro");
         employee1.setPhoneNo("2745896312");
-        employeeService.create(employee1);
+        employeeService.create(employee1, false);
 
         Employee employee2 = new Employee();
         employee2.setFirstName("FN2");
@@ -107,14 +107,14 @@ public class EmployeeServiceTest {
         employee2.setAddress("Home2");
         employee2.setEmail("em2@email.ro");
         employee2.setPhoneNo("0741296312");
-        employeeService.create(employee2);
+        employeeService.create(employee2, false);
 
         List<Employee> employeeList = new ArrayList<>();
-        employeeList = employeeService.findAll();
+        employeeList = employeeService.findAll(false);
         assertNotNull(employeeList);
         employeeList.forEach(System.out::println);
-        employeeService.delete(employee1);
-        employeeService.delete(employee2);
+        employeeService.delete(employee1, false);
+        employeeService.delete(employee2, false);
     }
 
     @Test
@@ -129,11 +129,11 @@ public class EmployeeServiceTest {
         employee2.setAddress("Home2");
         employee2.setEmail("em2@email.ro");
         employee2.setPhoneNo("0741296312");
-        employeeService.create(employee2);
+        employeeService.create(employee2, false);
 
-        employeeService.delete(employee2);
+        employeeService.delete(employee2, false);
 
-        assertNull(employeeService.getEmployee(employee2.getId()));
+        assertNull(employeeService.getEmployee(employee2.getId(), false));
 
     }
 

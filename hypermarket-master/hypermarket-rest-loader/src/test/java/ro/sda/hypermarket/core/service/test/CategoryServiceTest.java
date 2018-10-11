@@ -22,9 +22,9 @@ public class CategoryServiceTest {
         Category category = new Category();
         category.setName("Food");
         category.setDescription("Food and stuff");
-        categoryService.create(category);
+        categoryService.create(category, false);
         System.out.println(category.toString());
-        categoryService.delete(category);
+        categoryService.delete(category, false);
     }
 
     @Test
@@ -32,14 +32,14 @@ public class CategoryServiceTest {
         Category category = new Category();
         category.setName("Category1");
         category.setDescription("Description11");
-        categoryService.create(category);
+        categoryService.create(category, false);
         System.out.println(category.toString());
 
         category.setDescription("DescriptionUpdated");
-        categoryService.update(category);
+        categoryService.update(category, false);
         System.out.println(category.toString());
 
-        categoryService.delete(category);
+        categoryService.delete(category, false);
     }
 
     @Test
@@ -47,10 +47,10 @@ public class CategoryServiceTest {
         Category categoryTest = new Category();
         categoryTest.setName("TestCategory");
         categoryTest.setDescription("Test Category Description");
-        categoryService.create(categoryTest);
-        categoryService.getCategory(categoryTest.getId());
+        categoryService.create(categoryTest, false);
+        categoryService.getCategory(categoryTest.getId(), false);
         System.out.println(categoryTest.toString());
-        categoryService.delete(categoryTest);
+        categoryService.delete(categoryTest, false);
     }
 
     @Test
@@ -58,18 +58,18 @@ public class CategoryServiceTest {
         Category category = new Category();
         category.setName("Category1");
         category.setDescription("Description11");
-        categoryService.create(category);
+        categoryService.create(category, false);
         System.out.println(category.toString());
 
         Category categoryTest = new Category();
         categoryTest.setName("TestCategory");
         categoryTest.setDescription("Test Category Description");
-        categoryService.create(categoryTest);
+        categoryService.create(categoryTest, false);
         System.out.println(categoryTest.toString());
 
-        categoryService.findAll();
-        categoryService.delete(category);
-        categoryService.delete(categoryTest);
+        categoryService.findAll(false);
+        categoryService.delete(category, false);
+        categoryService.delete(categoryTest, false);
     }
 
     @Test
@@ -77,12 +77,12 @@ public class CategoryServiceTest {
         Category categoryTest = new Category();
         categoryTest.setName("TestCategory");
         categoryTest.setDescription("Test Category Description");
-        categoryService.create(categoryTest);
+        categoryService.create(categoryTest, false);
         System.out.println(categoryTest.toString());
 
-        categoryService.delete(categoryTest);
+        categoryService.delete(categoryTest, false);
 
-        assertNull(categoryService.getCategory(categoryTest.getId()));
+        assertNull(categoryService.getCategory(categoryTest.getId(), false));
 
     }
 }

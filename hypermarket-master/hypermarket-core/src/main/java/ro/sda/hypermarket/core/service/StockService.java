@@ -5,15 +5,15 @@ import ro.sda.hypermarket.core.entity.Stock;
 import java.util.List;
 
 public interface StockService {
-    public Stock create(Stock stock);
+    public Stock create(Stock stock, boolean useHibernate);
 
-    public Stock update(Stock stock);
+    public Stock update(Stock stock, boolean useHibernate);
 
-    public Stock getStock(long id);
+    public Stock getStock(long id, boolean useHibernate);
 
-    public List<Stock> findAll();
+    public List<Stock> findAll(boolean useHibernate);
 
     public List<Stock> getAllFromStock(String category);
 
-    public void delete(Stock stock);
+    public void delete(Stock stock, boolean useHibernate);
 }

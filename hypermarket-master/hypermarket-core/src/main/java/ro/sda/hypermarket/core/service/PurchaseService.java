@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface PurchaseService {
 
-    public Purchase create(Purchase purchase);
+    public Purchase create(Purchase purchase, boolean useHibernate);
 
-    public Purchase update(Purchase purchase);
+    public Purchase update(Purchase purchase, boolean useHibernate);
 
-    public Purchase getPurchase(long id);
+    public Purchase getPurchase(long id, boolean useHibernate);
 
-    public List<Purchase> findAll();
+    public List<Purchase> findAll(boolean useHibernate);
 
-    public void delete(Purchase purchase);
+    public void delete(Purchase purchase, boolean useHibernate);
 
 }

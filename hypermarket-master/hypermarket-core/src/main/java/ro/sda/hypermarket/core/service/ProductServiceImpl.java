@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ro.sda.hypermarket.core.dao.ProductDAO;
 import ro.sda.hypermarket.core.entity.Product;
+import ro.sda.hypermarket.core.repository.ProductRepository;
 
 import java.util.List;
 
@@ -15,24 +16,39 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDAO productDAO;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
-    public Product create(Product product) {
-        return productDAO.create(product);
+    public Product create(Product product, boolean useHibernate) {
+        if(useHibernate) {
+            return productDAO.create(product);
+        }
+        return productRepository.save(product);
     }
 
     @Override
-    public Product update(Product product) {
-        return productDAO.update(product);
+    public Product update(Product product, boolean useHibernate) {
+        if(useHibernate) {
+            return productDAO.update(product);
+        }
+        return productRepository.save(product);
     }
 
     @Override
-    public Product getProduct(long id) {
-        return productDAO.getProduct(id);
+    public Product getProduct(long id, boolean useHibernate) {
+        if(useHibernate) {
+            return productDAO.getProduct(id);
+        }
+        return productRepository.findById(id);
     }
 
     @Override
-    public List<Product> findAll() {
-        return productDAO.findAll();
+    public List<Product> findAll(boolean useHibernate) {
+        if(useHibernate) {
+            return productDAO.findAll();
+        }
+        return productRepository.findAll();
     }
 
     @Override
@@ -41,7 +57,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void delete(Product product) {
-        productDAO.delete(product);
+    public void delete(Product product, boolean useHibernate) {
+        if(useHibernate) {
+            productDAO.delete(product);
+        } else{
+            productRepository.delete(product);
+        }
     }
 }
